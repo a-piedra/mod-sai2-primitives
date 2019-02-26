@@ -2,16 +2,16 @@
 
 <world name="demo_world" gravity="0.0 0.0 -9.8">
 
-	<robot name="Puma1">
+	<robot name="panda1">
 		<!-- model node is required -->
-		<model dir="resources" path="puma_gripper.urdf" name="PumaGripper" />
+		<model dir="resources" path="panda_arm.urdf" name="panda" />
 		<!-- origin node is optional -->
 		<origin xyz="0.15 -0.6 0.0" rpy="0 0 0" />
 	</robot>
 
-	<robot name="Puma2">
+	<robot name="panda2">
 		<!-- model node is required -->
-		<model dir="resources" path="puma_gripper.urdf" name="PumaGripper" />
+		<model dir="resources" path="panda_arm.urdf" name="panda" />
 		<!-- origin node is optional -->
 		<origin xyz="0.15 0.6 0.0" rpy="0 0 0" />
 	</robot>
@@ -38,7 +38,7 @@
 	<static_object name="Obstacle">
 		<origin xyz="0.3 0.0 0.1" rpy="0 0 0" />
 		<collision>
-	        <origin xyz="0.0 0.0 0.1" rpy="0 0 0" />
+	        <origin xyz="0.3 0.0 0.1" rpy="0 0 0" />
 	        <geometry>
 	            <box size="0.2 0.2 0.2" />
 	        </geometry>
@@ -53,12 +53,7 @@
 	        </material>
 	    </visual>
 	</static_object>
-
-	<robot name="CoordObject">
-		<model dir="resources" path="object.urdf" name="ObjectModel" />
-		<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-	</robot>r
-
+	
 	<light name="light2" type="directional">
 		<position xyz="1.5 1.5 2.5" />
 		<lookat xyz="0.0 0.3 1.5" />

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="SAI2-PRIMITIVES" targetName="sai2-primitives" />
+      <config projectName="SAI2-PRIMITIVES" targetName="05-two_pumas" />
+      <config projectName="SAI2-PRIMITIVES" targetName="06-panda_guidance" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Default" GENERATION_DIR="build_cmake" BUILD_OPTIONS=".." />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a6ed6012-9b3c-40ef-ad0d-be8a2f1986a6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/05-kuka_screwing.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Bottle_NoThreads.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Bottle_NoThreads.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Bottle_NoThreads.stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap (no threads).stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap (with threads).stl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap2_NoThreads.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap2_NoThreads.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap_NoThreads.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/Cap_NoThreads.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/bottle.urdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/kinect_bottleID.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/kuka_iiwa.urdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-kuka_screwing/world.urdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-panda_screwing/05-panda_screwing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/05-panda_screwing/05-panda_screwing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-panda_screwing/world.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/examples/05-panda_screwing/world.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-two_pumas/05-two_pumas.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/examples/05-two_pumas/05-two_pumas.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/05-two_pumas/world_puma.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/examples/05-two_pumas/world_puma.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/examples/CMakeLists.txt" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <ignored path="$PROJECT_DIR$/build_cmake/" />
+    <ignored path="$PROJECT_DIR$/../CMakeFiles/" />
+    <ignored path="$PROJECT_DIR$/CMakeFiles/" />
+    <ignored path="$PROJECT_DIR$/examples/05-two_pumas/CMakeFiles/" />
+    <ignored path="$PROJECT_DIR$/examples/CMakeFiles/" />
+    <ignored path="$PROJECT_DIR$/examples/06-panda_guidance/CMakeFiles/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1357">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/examples/06-panda_guidance/06-panda_guidance.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="348" column="18" lean-forward="true" selection-start-line="348" selection-start-column="18" selection-end-line="348" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/examples/06-panda_guidance/06-panda_guidance.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1920" />
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
+    <option name="height" value="1113" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SAI2-PRIMITIVES" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mod-sai2-primitives" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.06-panda_guidance">
+    <configuration name="05-two_pumas" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SAI2-PRIMITIVES" TARGET_NAME="05-two_pumas" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="SAI2-PRIMITIVES" RUN_TARGET_NAME="05-two_pumas">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="06-panda_guidance" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SAI2-PRIMITIVES" TARGET_NAME="06-panda_guidance" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="SAI2-PRIMITIVES" RUN_TARGET_NAME="06-panda_guidance">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="sai2-primitives" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="SAI2-PRIMITIVES" TARGET_NAME="sai2-primitives" CONFIG_NAME="Default">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.sai2-primitives" />
+      <item itemvalue="Application.05-two_pumas" />
+      <item itemvalue="Application.06-panda_guidance" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a6ed6012-9b3c-40ef-ad0d-be8a2f1986a6" name="Default Changelist" comment="" />
+      <created>1551162647643</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1551162647643</updated>
+      <workItem from="1551162651429" duration="679000" />
+      <workItem from="1551163482516" duration="1427000" />
+      <workItem from="1551164967852" duration="78000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2184000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="24" width="1920" height="1113" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14727855" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32921812" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32938856" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.33847737" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32938856" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32938856" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32938856" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18676628" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32938856" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32938856" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.32938856" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32938856" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32938856" />
+      <window_info anchor="bottom" id="CMake" order="12" weight="0.32938856" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1357">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/06-panda_guidance/06-panda_guidance.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="348" column="18" lean-forward="true" selection-start-line="348" selection-start-column="18" selection-end-line="348" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -48,10 +48,10 @@ set(SAI2-PRIMITIVES_EXAMPLES_COMMON_LIBRARIES
 	)
 
 
-ADD_SUBDIRECTORY(01-puma_control_pos_and_ori_tasks)
-ADD_SUBDIRECTORY(02-puma_control_posori_tasks)
-ADD_SUBDIRECTORY(03-kuka_arm_motion_primitive)
-ADD_SUBDIRECTORY(04-kuka_surface_surface_alignment)
-ADD_SUBDIRECTORY(05-kuka_screwing)
-ADD_SUBDIRECTORY(05-panda_screwing)
+# ADD_SUBDIRECTORY(01-puma_control_pos_and_ori_tasks)
+# ADD_SUBDIRECTORY(02-puma_control_posori_tasks)
+# ADD_SUBDIRECTORY(03-kuka_arm_motion_primitive)
+# ADD_SUBDIRECTORY(04-kuka_surface_surface_alignment)
+# ADD_SUBDIRECTORY(05-panda_screwing)
 ADD_SUBDIRECTORY(05-two_pumas)
+ADD_SUBDIRECTORY(06-panda_guidance)

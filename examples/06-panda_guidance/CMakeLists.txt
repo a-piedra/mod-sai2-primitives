@@ -1,8 +1,8 @@
 # create an executable
-ADD_EXECUTABLE (05-kuka_screwing 05-kuka_screwing.cpp)
+ADD_EXECUTABLE (06-panda_guidance 06-panda_guidance.cpp)
 
 # and link the library against the executable
-TARGET_LINK_LIBRARIES (05-kuka_screwing
+TARGET_LINK_LIBRARIES (06-panda_guidance
 	${SAI2-PRIMITIVES_LIBRARIES}
 	${SAI2-PRIMITIVES_EXAMPLES_COMMON_LIBRARIES}
 	)
@@ -11,4 +11,4 @@ TARGET_LINK_LIBRARIES (05-kuka_screwing
 # NOTE: this requires an install build
 SET(RESOURCE_DIR ${CMAKE_CURRENT_BINARY_DIR}/resources)
 FILE(MAKE_DIRECTORY ${RESOURCE_DIR})
-FILE(COPY world.urdf kuka_iiwa.urdf bottle.urdf Cap_NoThreads.mtl Cap_NoThreads.obj Cap2_NoThreads.mtl Cap2_NoThreads.obj Bottle_NoThreads.mtl Bottle_NoThreads.obj  DESTINATION ${RESOURCE_DIR})
+FILE(COPY panda_arm.urdf world_panda.urdf DESTINATION ${RESOURCE_DIR})

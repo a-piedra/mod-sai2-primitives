@@ -2,11 +2,18 @@
 
 <world name="demo_world" gravity="0.0 0.0 -9.81">
 
-	<robot name="panda">
+	<robot name="panda1">
 		<!-- model node is required -->
 		<model dir="./resources" path="panda_arm.urdf" name="panda" />
 		<!-- origin node is optional -->
-		<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+		<origin xyz="0.0 -0.5 0.0" rpy="0 0 0" />
+	</robot>
+
+	<robot name="panda2">
+		<!-- model node is required -->
+		<model dir="./resources" path="panda_arm.urdf" name="panda" />
+		<!-- origin node is optional -->
+		<origin xyz="0.0 0.5 0.0" rpy="0 0 0" />
 	</robot>
 
 	<robot name="Bottle">
@@ -50,7 +57,7 @@
 
 	<!-- NO ZOOM -->
 	<camera name="camera">
-		<position xyz="0.2 1.5 0.5" />
+		<position xyz="0.5 0 0.5" />
 		<vertical xyz="0.0 0.0 1.0" />
 		<lookat xyz="0.0 0.0 0.5" />
 	</camera>

@@ -37,7 +37,7 @@ const string robot2_name = "Puma2";
 const string object_name = "CoordObject";
 const string object_fname = "resources/object.urdf";
 const string object_link_name = "object";
-const string camera_name = "camera_front";
+const string camera_name = "camera_top";
 const string ee_link_name = "end-effector";
 const string gripper_joint_name = "gripper";
 
@@ -70,6 +70,18 @@ void glfwError(int error, const char* description);
 // callback when a key is pressed
 void keySelect(GLFWwindow* window, int key, int scancode, int action, int mods);
 
+// callback when a mouse button is pressed
+void mouseClick(GLFWwindow* window, int button, int action, int mods);
+
+// flags for scene camera movement
+bool fTransXp = false;
+bool fTransXn = false;
+bool fTransYp = false;
+bool fTransYn = false;
+bool fTransZp = false;
+bool fTransZn = false;
+bool fRotPanTilt = false;
+
 /* =======================================================================================
    MAIN LOOP
 ========================================================================================== */
@@ -78,6 +90,8 @@ int main (int argc, char** argv) {
 
 	// load graphics scene
 	auto graphics = new Sai2Graphics::Sai2Graphics(world_fname, false);
+    Eigen::Vector3d camera_pos, camera_lookat, camera_vertical;
+    graphics->getCameraPose(camera_name, camera_pos, camera_vertical, camera_lookat);
 
 	// load robots
 	auto robot1 = new Sai2Model::Sai2Model(robot_fname, false);
@@ -101,15 +115,15 @@ int main (int argc, char** argv) {
     sim->setCoeffFrictionDynamic(0.5);
     
 	// //Display frame on held object
-	// auto vis_world_ptr = graphics->_world;
-	// chai3d::cGenericObject* object_ptr;
-	// for (uint i = 0; i < vis_world_ptr->getNumChildren(); i++) {
-	// 	auto temp_ptr = vis_world_ptr->getChild(i);
-	// 	if (strcmp(temp_ptr->m_name.c_str(), object_name.c_str()) == 0) {
-	// 		object_ptr = temp_ptr;
-	// 	}
-	// }
-	// object_ptr->setShowFrame(true, false);
+    // auto vis_world_ptr = graphics->_world;
+    // chai3d::cGenericObject* object_ptr;
+    // for (uint i = 0; i < vis_world_ptr->getNumChildren(); i++) {
+    // 	auto temp_ptr = vis_world_ptr->getChild(i);
+    // 	if (strcmp(temp_ptr->m_name.c_str(), object_name.c_str()) == 0) {
+    // 		object_ptr = temp_ptr;
+    // 	}
+    // }
+    // object_ptr->setShowFrame(true, false);
 
     // set joint damping on grippers: TODO: the values needed seem to much larger than physical!
     auto base_1 = sim->_world->getBaseNode(robot1_name);
@@ -148,8 +162,11 @@ int main (int argc, char** argv) {
 	// initialize GLFW window
 	GLFWwindow* window = glfwInitialize();
 
+    double last_cursorx, last_cursory;
+
     // set callbacks
 	glfwSetKeyCallback(window, keySelect);
+    glfwSetMouseButtonCallback(window, mouseClick);
 
 	// start the simulation thread first
     fSimulationRunning = true;
@@ -175,6 +192,61 @@ int main (int argc, char** argv) {
 
 	    // poll for events
 	    glfwPollEvents();
+
+        // move scene camera as required
+                // graphics->getCameraPose(camera_name, camera_pos, camera_vertical, camera_lookat);
+                Eigen::Vector3d cam_depth_axis;
+                cam_depth_axis = camera_lookat - camera_pos;
+                cam_depth_axis.normalize();
+                Eigen::Vector3d cam_up_axis;
+                // cam_up_axis = camera_vertical;
+                // cam_up_axis.normalize();
+                cam_up_axis << 0.0, 0.0, 1.0; //TODO: there might be a better way to do this
+                Eigen::Vector3d cam_roll_axis = (camera_lookat - camera_pos).cross(cam_up_axis);
+                cam_roll_axis.normalize();
+                Eigen::Vector3d cam_lookat_axis = camera_lookat;
+                cam_lookat_axis.normalize();
+                if (fTransXp) {
+                    camera_pos = camera_pos + 0.05*cam_roll_axis;
+                    camera_lookat = camera_lookat + 0.05*cam_roll_axis;
+                }
+                if (fTransXn) {
+                    camera_pos = camera_pos - 0.05*cam_roll_axis;
+                    camera_lookat = camera_lookat - 0.05*cam_roll_axis;
+                }
+                if (fTransYp) {
+                    // camera_pos = camera_pos + 0.05*cam_lookat_axis;
+                    camera_pos = camera_pos + 0.05*cam_up_axis;
+                    camera_lookat = camera_lookat + 0.05*cam_up_axis;
+                }
+                if (fTransYn) {
+                    // camera_pos = camera_pos - 0.05*cam_lookat_axis;
+                    camera_pos = camera_pos - 0.05*cam_up_axis;
+                    camera_lookat = camera_lookat - 0.05*cam_up_axis;
+                }
+                if (fTransZp) {
+                    camera_pos = camera_pos + 0.1*cam_depth_axis;
+                    camera_lookat = camera_lookat + 0.1*cam_depth_axis;
+                }
+                if (fTransZn) {
+                    camera_pos = camera_pos - 0.1*cam_depth_axis;
+                    camera_lookat = camera_lookat - 0.1*cam_depth_axis;
+                }
+                if (fRotPanTilt) {
+                    // get current cursor position
+                    double cursorx, cursory;
+                    glfwGetCursorPos(window, &cursorx, &cursory);
+                    //TODO: might need to re-scale from screen units to physical units
+                    double compass = 0.006*(cursorx - last_cursorx);
+                    double azimuth = 0.006*(cursory - last_cursory);
+                    double radius = (camera_pos - camera_lookat).norm();
+                    Eigen::Matrix3d m_tilt; m_tilt = Eigen::AngleAxisd(azimuth, -cam_roll_axis);
+                    camera_pos = camera_lookat + m_tilt*(camera_pos - camera_lookat);
+                    Eigen::Matrix3d m_pan; m_pan = Eigen::AngleAxisd(compass, -cam_up_axis);
+                    camera_pos = camera_lookat + m_pan*(camera_pos - camera_lookat);
+                }
+                graphics->setCameraPose(camera_name, camera_pos, cam_up_axis, camera_lookat);
+                glfwGetCursorPos(window, &last_cursorx, &last_cursory);
 	}
 
 	// stop simulation
@@ -581,10 +653,58 @@ void glfwError(int error, const char* description) {
 
 void keySelect(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    // option ESC: exit
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-    {
-        // exit application
-         glfwSetWindowShouldClose(window, 1);
+    bool set = (action != GLFW_RELEASE);
+    switch(key) {
+        case GLFW_KEY_ESCAPE:
+            // exit application
+            glfwSetWindowShouldClose(window,GL_TRUE);
+            break;
+        case GLFW_KEY_RIGHT:
+            fTransXp = set;
+            break;
+        case GLFW_KEY_LEFT:
+            fTransXn = set;
+            break;
+        case GLFW_KEY_UP:
+            fTransYp = set;
+            break;
+        case GLFW_KEY_DOWN:
+            fTransYn = set;
+            break;
+        case GLFW_KEY_A:
+            fTransZp = set;
+            break;
+        case GLFW_KEY_Z:
+            fTransZn = set;
+            break;
+        default:
+            break;
+    }
+}
+
+void mouseClick(GLFWwindow* window, int button, int action, int mods) {
+    bool set = (action != GLFW_RELEASE);
+    //TODO: mouse interaction with robot
+        switch (button) {
+        // left click pans and tilts
+        case GLFW_MOUSE_BUTTON_LEFT:
+            fRotPanTilt = set;
+            // NOTE: the code below is recommended but doesn't work well
+            // if (fRotPanTilt) {
+            // 	// lock cursor
+            // 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            // } else {
+            // 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            // }
+            break;
+        // if right click: don't handle. this is for menu selection
+        case GLFW_MOUSE_BUTTON_RIGHT:
+            //TODO: menu
+            break;
+        // if middle click: don't handle. doesn't work well on laptops
+        case GLFW_MOUSE_BUTTON_MIDDLE:
+            break;
+        default:
+            break;
     }
 }

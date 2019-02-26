@@ -46,7 +46,7 @@ using namespace std;
 
 const string world_file = "resources/world.urdf";
 const string robot_file = "resources/panda_arm.urdf";
-const string robot_name = "panda";
+const string robot_name = "panda1";
 const string bottle_file = "resources/bottle.urdf";
 const string bottle_name = "Bottle";
 const string camera_name = "camera";
@@ -163,7 +163,7 @@ int main (int argc, char** argv) {
 	auto sim = new Simulation::Sai2Simulation(world_file, false);
 	sim->setCollisionRestitution(0);
 	sim->setCoeffFrictionStatic(0.05); //might need to increase friction when screws are added?
-	sim->setCoeffFrictionDynamic(0);
+	sim->setCoeffFrictionDynamic(0)effector;
 
 	// load robots
 	Eigen::Vector3d world_gravity = sim->_world->getGravity().eigen();
