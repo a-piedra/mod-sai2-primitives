@@ -60,15 +60,15 @@ include examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/flags.make
 examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o: examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/flags.make
 examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o: ../examples/06-panda_guidance/06-panda_guidance.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp
 
 examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.i"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp > CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.i
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp > CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.i
 
 examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.s"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp -o CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.s
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp -o CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.s
 
 examples/06-panda_guidance/CMakeFiles/06-panda_guidance.dir/06-panda_guidance.cpp.o.requires:
 

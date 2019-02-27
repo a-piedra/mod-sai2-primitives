@@ -60,15 +60,15 @@ include CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o: ../src/tasks/PositionTask.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o.requires:
 
@@ -84,15 +84,15 @@ CMakeFiles/sai2-primitives.dir/src/tasks/PositionTask.cpp.o.provides.build: CMak
 CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o: ../src/tasks/OrientationTask.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp
 
 CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o.requires:
 
@@ -108,15 +108,15 @@ CMakeFiles/sai2-primitives.dir/src/tasks/OrientationTask.cpp.o.provides.build: C
 CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o: ../src/tasks/PosOriTask.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o.requires:
 
@@ -132,15 +132,15 @@ CMakeFiles/sai2-primitives.dir/src/tasks/PosOriTask.cpp.o.provides.build: CMakeF
 CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o: ../src/tasks/JointTask.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp
 
 CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o.requires:
 
@@ -156,15 +156,15 @@ CMakeFiles/sai2-primitives.dir/src/tasks/JointTask.cpp.o.provides.build: CMakeFi
 CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o: ../src/tasks/SupportAndConstraintsTask.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp
 
 CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp > CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp -o CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o.requires:
 
@@ -180,15 +180,15 @@ CMakeFiles/sai2-primitives.dir/src/tasks/SupportAndConstraintsTask.cpp.o.provide
 CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o: ../src/primitives/RedundantArmMotion.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp
 
 CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o.requires:
 
@@ -204,15 +204,15 @@ CMakeFiles/sai2-primitives.dir/src/primitives/RedundantArmMotion.cpp.o.provides.
 CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o: ../src/primitives/SurfaceSurfaceAlignment.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp
 
 CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o.requires:
 
@@ -228,15 +228,15 @@ CMakeFiles/sai2-primitives.dir/src/primitives/SurfaceSurfaceAlignment.cpp.o.prov
 CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o: ../src/primitives/ScrewingAlignment.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp
 
 CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o.requires:
 
@@ -252,15 +252,15 @@ CMakeFiles/sai2-primitives.dir/src/primitives/ScrewingAlignment.cpp.o.provides.b
 CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o: CMakeFiles/sai2-primitives.dir/flags.make
 CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o: ../src/primitives/DualArmObjectMotion.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp
+	/usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp
 
 CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.i
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp > CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.i
 
 CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.s
+	/usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp -o CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.s
 
 CMakeFiles/sai2-primitives.dir/src/primitives/DualArmObjectMotion.cpp.o.requires:
 

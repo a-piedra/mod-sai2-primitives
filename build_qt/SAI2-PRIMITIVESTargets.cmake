@@ -41,11 +41,11 @@ unset(_expectedTargets)
 # Create imported target sai2-primitives
 add_library(sai2-primitives STATIC IMPORTED)
 
-# Import target "sai2-primitives" for configuration "Debug"
-set_property(TARGET sai2-primitives APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
+# Import target "sai2-primitives" for configuration "Release"
+set_property(TARGET sai2-primitives APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(sai2-primitives PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
-  IMPORTED_LOCATION_DEBUG "/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/libsai2-primitives.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+  IMPORTED_LOCATION_RELEASE "/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/libsai2-primitives.a"
   )
 
 # This file does not depend on other imported targets which have

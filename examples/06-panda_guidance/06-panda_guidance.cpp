@@ -103,6 +103,8 @@ bool fTransYn = false;
 bool fTransZp = false;
 bool fTransZn = false;
 bool fRotPanTilt = false;
+bool fRotCCW = false;
+bool fRotCW = false;
 
 double theta_deg = 0;
 unsigned long long controller_counter = 0;
@@ -111,8 +113,16 @@ Eigen::Vector3d curr_Pos1;
 Eigen::Vector3d curr_Pos2;
 Eigen::Vector3d goal_delPos1;
 Eigen::Vector3d goal_delPos2;
+double goal_delOriZ1 = 0;
+double goal_delOriZ2 = 0;
 
-#define DELTA_GOAL_POS  0.005    // change in goal position after key input
+// flag for sensing contact
+bool contact = false;
+bool change_ori = false;
+
+#define DELTA_GOAL_ORI_Z        10      // change in goal end-effector z-rotation after key input (in degrees)
+#define DELTA_GOAL_POS          0.005   // change in goal position after key input
+#define POS_ERROR_THRESHOLD     0.3     // position error norm required to determine contact
 
 /* =======================================================================================
    MAIN LOOP
@@ -253,6 +263,14 @@ int main (int argc, char** argv) {
             Eigen::Matrix3d m_pan; m_pan = Eigen::AngleAxisd(compass, -cam_up_axis);
             camera_pos = camera_lookat + m_pan*(camera_pos - camera_lookat);
         }
+        if (fRotCCW) {
+            change_ori = true;
+            goal_delOriZ1 -= (M_PI/180.0) * (DELTA_GOAL_ORI_Z);
+        }
+        if (fRotCW) {
+            change_ori = true;
+            goal_delOriZ1 += (M_PI/180.0) * (DELTA_GOAL_ORI_Z);
+        }
 	    graphics->setCameraPose(camera_name, camera_pos, cam_up_axis, camera_lookat);
 	    glfwGetCursorPos(window, &last_cursorx, &last_cursory);
 	}
@@ -268,7 +286,7 @@ int main (int argc, char** argv) {
     // terminate
     glfwTerminate();
 
-	return 0;
+    return 0;
 }
 
 /* ----------------------------------------------------------------------------------
@@ -316,6 +334,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
     Eigen::VectorXd command_torques1 = Eigen::VectorXd::Zero(dof);
     Eigen::VectorXd command_torques2 = Eigen::VectorXd::Zero(dof);
 
+    Sai2Primitives::PosOriTask* base_pos_task1 = new Sai2Primitives::PosOriTask(robot1, "link0");
+
 	Eigen::Affine3d control_frame_in_link = Eigen::Affine3d::Identity();
 	control_frame_in_link.translation() = pos_in_link;
 	Eigen::Affine3d sensor_frame_in_link = Eigen::Affine3d::Identity();
@@ -325,8 +345,9 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
     Sai2Primitives::RedundantArmMotion* motion_primitive1 = new Sai2Primitives::RedundantArmMotion(robot1, link_name, pos_in_link);
     Sai2Primitives::RedundantArmMotion* motion_primitive2 = new Sai2Primitives::RedundantArmMotion(robot2, link_name, pos_in_link);
     motion_primitive1->enableGravComp();
+    motion_primitive1->_posori_task->_kp_pos = 300;
+    motion_primitive1->_posori_task->_kv_pos = 25;
     motion_primitive2->enableGravComp();
-
 
 	// Screwing primitive 
     Sai2Primitives::ScrewingAlignment* screwing_primitive1 = new Sai2Primitives::ScrewingAlignment(robot1, link_name, control_frame_in_link, sensor_frame_in_link);
@@ -334,14 +355,19 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
     screwing_primitive1->enableGravComp();
 //    screwing_primitive2->enableGravComp();
 
-    Eigen::Matrix3d current_orientation;
-	Eigen::Matrix3d initial_orientation;
+    Eigen::Matrix3d R;
+    Eigen::Matrix3d current_orientation1;
+    Eigen::Matrix3d initial_orientation1;
     Eigen::Vector3d initial_position1;
+    Eigen::Matrix3d current_orientation2;
+    Eigen::Matrix3d initial_orientation2;
     Eigen::Vector3d initial_position2;
-    robot1->rotation(initial_orientation, motion_primitive1->_link_name);
+    robot1->rotation(initial_orientation1, motion_primitive1->_link_name);
     robot1->position(initial_position1, motion_primitive1->_link_name, motion_primitive1->_control_frame.translation());
-    robot2->rotation(initial_orientation, motion_primitive2->_link_name);
+    robot2->rotation(initial_orientation2, motion_primitive2->_link_name);
     robot2->position(initial_position2, motion_primitive2->_link_name, motion_primitive2->_control_frame.translation());
+    current_orientation1 = initial_orientation1;
+    current_orientation2 = initial_orientation2;
 
 	// create a loop timer
 	double control_freq = 1000;
@@ -394,6 +420,16 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
 
     //		motion_primitive->_desired_orientation = R*initial_orientation;
     //    }
+        if (change_ori)
+        {
+            change_ori = false;
+            R <<    cos(goal_delOriZ1),     -sin(goal_delOriZ1),        0,
+                    sin(goal_delOriZ1),      cos(goal_delOriZ1),        0,
+                                     0,                       0,        1;
+            motion_primitive1->_desired_orientation = R*initial_orientation1;
+        }
+
+        base_pos_task1->_goal_position += Eigen::Vector3d(0.01,0.01,0.01);
 
         // set leader position and velocity
         motion_primitive1->_desired_position = initial_position1 + goal_delPos1;
@@ -402,17 +438,26 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
         // set follower position (under collision or in free space)
         robot2->position(curr_Pos2, motion_primitive2->_link_name, motion_primitive2->_control_frame.translation());
         // check for collision
-        if ( (sensed_force.array() != 0.0).any() ) {
+        Eigen::Vector3d pos_error1 = motion_primitive1->_posori_task->_current_position - motion_primitive1->_desired_position;
+//        if (pos_error1.norm() >= POS_ERROR_THRESHOLD)
+        if ( (pos_error1.array().abs() >= POS_ERROR_THRESHOLD).any() or (sensed_force.array() != 0.0).any() )
+        {
+            contact = true;
+        }
+//        if ( (sensed_force.array() != 0.0).any() ) {
 //            goal_delPos2 = goal_delPos1;
-            Eigen::Vector3d proj_goal_on_F = (sensed_force.dot(goal_delPos2) / (sensed_force.squaredNorm())) * (sensed_force);
+//            Eigen::Vector3d proj_goal_on_F = (sensed_force.dot(goal_delPos2) / (sensed_force.squaredNorm())) * (sensed_force);
 //            motion_primitive2->_desired_position = initial_position2 + (goal_delPos2 - proj_goal_on_F);
 //            motion_primitive2->_desired_position = initial_position2 + goal_delPos2;
-            motion_primitive2->_desired_position = curr_Pos2;
-        }
+//            motion_primitive2->_desired_position = curr_Pos2;
+//        }
         // otherwise, operate in free space
-        else {
+        else
+        {
+            contact = false;
             goal_delPos2 = goal_delPos1;
             motion_primitive2->_desired_position = initial_position2 + goal_delPos2;
+            motion_primitive2->_desired_orientation = motion_primitive1->_posori_task->_current_orientation;
         }
 
         // set follower velocity
@@ -426,15 +471,15 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Simulat
         motion_primitive2->computeTorques(command_torques2);
         sim->setJointTorques(robot2_name, command_torques2);
 
-    //	if (controller_counter >= 1500){
-    //		theta_deg = 0;
-    //		return FINISHED;
-    //	}
-
         // update counter and timer
 		controller_counter++;
 		curr_control_time++;
 		last_time = curr_time;
+
+        if (controller_counter % 500 == 0)
+        {
+            cout << contact << endl;
+        }
 
 		//*
 		// Recording data
@@ -482,7 +527,7 @@ void simulation(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Forc
 		// force sensor update
 		fsensor->update(sim);
         fsensor->getForce(sensed_force);
-        cout << sensed_force << endl;
+//        cout << sensed_force << endl;
         fsensor->getMoment(sensed_moment);
 
 		// integrate forward
@@ -560,6 +605,12 @@ void keySelect(GLFWwindow* window, int key, int scancode, int action, int mods)
 		case GLFW_KEY_Z:
 			fTransZn = set;
 			break;
+        case GLFW_KEY_Q:
+            fRotCCW = set;
+            break;
+        case GLFW_KEY_E:
+            fRotCW = set;
+            break;
 		default:
 			break;
     }

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+   <FileVersion major="1" minor="6" />
+   <Project>
+      <Option title="SAI2-PRIMITIVES" />
+      <Option makefile_is_custom="1" />
+      <Option compiler="gcc" />
+      <Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\..\usr\lib\cmake\;CMake Files\..\..\..\..\..\..\..\usr\lib\cmake\eigen3\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\;CMake Files\..\sai2-model\;CMake Files\..\sai2-model\build\;CMake Files\..\sai2-graphics\;CMake Files\..\sai2-graphics\chai3d\;CMake Files\..\sai2-graphics\chai3d\build\;CMake Files\..\sai2-graphics\build\;CMake Files\..\sai2-simulation\;CMake Files\..\sai2-simulation\build\;CMake Files\..\sai2-common\;CMake Files\..\sai2-common\build\;CMake Files\..\sai2-urdfreader\;CMake Files\..\sai2-urdfreader\build\;CMake Files\examples\;CMake Files\examples\05-two_pumas\;CMake Files\examples\06-panda_guidance\;" />
+      <Build>
+      <Target title="all">
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 all" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="rebuild_cache">
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 rebuild_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="edit_cache">
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt" />
+         <Option type="4" />
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 edit_cache" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="sai2-primitives">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/libsai2-primitives.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 sai2-primitives" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="sai2-primitives/fast">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/libsai2-primitives.a" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt" />
+         <Option object_output="./" />
+         <Option type="2" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 sai2-primitives/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="05-two_pumas">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/05-two_pumas" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_LINUX" />
+            <Add option="-DLINUX" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-common/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/external/glew/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-simulation/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src/urdf/urdfdom/urdf_parser/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/tinyxml2" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/jsoncpp" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 05-two_pumas" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="05-two_pumas/fast">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/05-two_pumas" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_LINUX" />
+            <Add option="-DLINUX" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-common/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/external/glew/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-simulation/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src/urdf/urdfdom/urdf_parser/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/tinyxml2" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/jsoncpp" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 05-two_pumas/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="06-panda_guidance">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/06-panda_guidance" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_LINUX" />
+            <Add option="-DLINUX" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-common/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/external/glew/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-simulation/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src/urdf/urdfdom/urdf_parser/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/tinyxml2" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/jsoncpp" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 06-panda_guidance" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      <Target title="06-panda_guidance/fast">
+         <Option output="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/06-panda_guidance" prefix_auto="0" extension_auto="0" />
+         <Option working_dir="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance" />
+         <Option object_output="./" />
+         <Option type="1" />
+         <Option compiler="gcc" />
+         <Compiler>
+            <Add option="-D_LINUX" />
+            <Add option="-DLINUX" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-common/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/external/glew/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/chai3d/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-graphics/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/build/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/rbdl/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-model/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-simulation/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/src/urdf/urdfdom/urdf_parser/include" />
+            <Add directory="/home/adrian/Documents/research/sai2/core/sai2-urdfreader/tinyxml2" />
+            <Add directory="/usr/include" />
+            <Add directory="/usr/include/c++/5" />
+            <Add directory="/usr/include/c++/5/backward" />
+            <Add directory="/usr/include/eigen3" />
+            <Add directory="/usr/include/jsoncpp" />
+            <Add directory="/usr/include/x86_64-linux-gnu" />
+            <Add directory="/usr/include/x86_64-linux-gnu/c++/5" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include" />
+            <Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+            <Add directory="/usr/local/include" />
+         </Compiler>
+         <MakeCommands>
+            <Build command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 06-panda_guidance/fast" />
+            <CompileFile command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 &quot;$file&quot;" />
+            <Clean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 clean" />
+            <DistClean command="/usr/bin/make -f &quot;/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/06-panda_guidance/Makefile&quot;  VERBOSE=1 clean" />
+         </MakeCommands>
+      </Target>
+      </Build>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp">
+         <Option target="05-two_pumas"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/06-panda_guidance.cpp">
+         <Option target="06-panda_guidance"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/DualArmObjectMotion.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/RedundantArmMotion.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/ScrewingAlignment.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/primitives/SurfaceSurfaceAlignment.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/JointTask.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/OrientationTask.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PosOriTask.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/PositionTask.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.cpp">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/src/tasks/SupportAndConstraintsTask.h">
+         <Option target="sai2-primitives"/>
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/SAI2-PRIMITIVESConfig.cmake.in">
+          <Option virtualFolder="CMake Files\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../../../../../../../usr/lib/cmake/eigen3/Eigen3Config.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\cmake\eigen3\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3ConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../../../../../../../usr/lib/x86_64-linux-gnu/cmake/glfw3/glfw3Config.cmake">
+          <Option virtualFolder="CMake Files\..\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\glfw3\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-model/build/SAI2-MODELConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-model\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-model/build/SAI2-MODELConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-model\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-model/build/SAI2-MODELTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-model\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/chai3d/build/CHAI3DConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\chai3d\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/chai3d/build/CHAI3DConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\chai3d\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/chai3d/build/CHAI3DTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\chai3d\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/build/SAI2-GRAPHICSConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/build/SAI2-GRAPHICSConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-graphics/build/SAI2-GRAPHICSTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-graphics\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-simulation/build/SAI2-SIMULATIONConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-simulation\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-simulation/build/SAI2-SIMULATIONConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-simulation\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-simulation/build/SAI2-SIMULATIONTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-simulation\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-common/build/SAI2-COMMONConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-common\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-common/build/SAI2-COMMONConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-common\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-common/build/SAI2-COMMONTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-common\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-urdfreader/build/SAI2-URDFConfigVersion.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-urdfreader\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-urdfreader/build/SAI2-URDFConfig.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-urdfreader\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/../sai2-urdfreader/build/SAI2-URDFTargets.cmake">
+          <Option virtualFolder="CMake Files\..\sai2-urdfreader\build\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\05-two_pumas\" />
+      </Unit>
+      <Unit filename="/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/06-panda_guidance/CMakeLists.txt">
+          <Option virtualFolder="CMake Files\examples\06-panda_guidance\" />
+      </Unit>
+   </Project>
+</CodeBlocks_project_file>

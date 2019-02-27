@@ -60,15 +60,15 @@ include examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/flags.make
 examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o: examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/flags.make
 examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o: ../examples/05-two_pumas/05-two_pumas.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/g++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o -c /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp
 
 examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.i"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp > CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.i
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp > CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.i
 
 examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.s"
-	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp -o CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.s
+	cd /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/build_qt/examples/05-two_pumas && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/adrian/Documents/research/sai2/core/mod-sai2-primitives/examples/05-two_pumas/05-two_pumas.cpp -o CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.s
 
 examples/05-two_pumas/CMakeFiles/05-two_pumas.dir/05-two_pumas.cpp.o.requires:
 

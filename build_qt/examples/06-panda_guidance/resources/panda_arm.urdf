@@ -12,11 +12,11 @@
           <mesh filename="../../../../examples/models/panda/meshes/link0.obj"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="../../../../examples/models/panda/meshes/link0.obj"/>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <link name="link1">
       <inertial>
@@ -29,11 +29,11 @@
           <mesh filename="../../../../examples/models/panda/meshes/link1.obj"/>
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <geometry>
           <mesh filename="../../../../examples/models/panda/meshes/link1.obj"/>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
     <link name="link2">
       <inertial>
