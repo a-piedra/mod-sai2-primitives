@@ -43,8 +43,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link0.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link0.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link0.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link0.obj"/>
         </geometry>
       </visual>
       <!-- <collision>
@@ -61,8 +61,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link1.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link1.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link1.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link1.obj"/>
         </geometry>
       </visual>
       <!-- <collision>
@@ -79,8 +79,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link2.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link2.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link2.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link2.obj"/>
         </geometry>
       </visual>
       <collision>
@@ -97,8 +97,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link3.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link3.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link3.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link3.obj"/>
         </geometry>
       </visual>
       <collision>
@@ -115,8 +115,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link4.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link4.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link4.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link4.obj"/>
         </geometry>
       </visual>
       <collision>
@@ -133,8 +133,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link5.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link5.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link5.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link5.obj"/>
         </geometry>
       </visual>
       <collision>
@@ -151,8 +151,8 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link6.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link6.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link6.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link6.obj"/>
         </geometry>
         <!-- <material>
           <color rgba="0.5 0.2 0.1 1.0" />
@@ -175,8 +175,8 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link7.obj"/>
-          <!-- <mesh filename="../../../../examples/models/panda/meshes/link7.obj"/> -->
+          <!-- <mesh filename="../../../../examples/models/franka_panda/meshes/visual/link7.obj"/> -->
+          <mesh filename="../../../../examples/models/panda/meshes/link7.obj"/>
         </geometry>
       </visual>
       <collision>

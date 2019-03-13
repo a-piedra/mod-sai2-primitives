@@ -16,18 +16,25 @@
 		<origin xyz="0.15 0.6 0.0" rpy="0 0 0" />
 	</robot>
 
-	<static_object name="Box">
+	<robot name="panda3">
+		<!-- model node is required -->
+		<model dir="resources" path="panda_arm.urdf" name="panda" />
+		<!-- origin node is optional -->
+		<origin xyz="-0.45 0.0 0.0" rpy="0 0 0" />
+	</robot>
+
+	<static_object name="Ground">
 		<origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
-		<collision>
+		<!-- <collision>
 	        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
 	        <geometry>
 	            <box size="3.0 3.0 0.1" />
 	        </geometry>
-	    </collision>
+	    </collision> -->
 	    <visual>
 	        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
 	        <geometry>
-	            <box size="3.0 3.0 0.1" />
+	            <box size="10.0 10.0 0.1" />
 	        </geometry>
 	        <material name="material_grey">
 		        <!-- <color rgba="0.1 0.1 0.1 1.0" /> -->
@@ -36,7 +43,7 @@
 	    </visual>
 	</static_object>
 
-	<static_object name="Obstacle">
+	<static_object name="Obstacle1">
 		<origin xyz="0.3 0.0 0.1" rpy="0 0 0" />
 		<collision>
 	        <origin xyz="0.3 0.0 0.1" rpy="0 0 0" />
@@ -71,7 +78,8 @@
 		<lookat xyz="0.0 0.0 0.5" />
 	</camera>
 	<camera name="camera_top">
-		<position xyz="1.5 0.0 2.0" />
+		<!-- <position xyz="1.5 0.0 2.0" /> -->
+		<position xyz="3.5 0.0 4.0" />
 		<vertical xyz="0.0 0.0 1.0" />
 		<lookat xyz="0.0 0.0 0.4" />
 	</camera>
