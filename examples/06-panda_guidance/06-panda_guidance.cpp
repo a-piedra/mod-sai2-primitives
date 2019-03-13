@@ -119,9 +119,9 @@ bool changeOri = false;
 double theta_deg = 0;
 unsigned long long controller_counter = 0;
 unsigned long long curr_control_time = 0;
-Eigen::Vector3d currPos1; // end-effector position of guidance robot 1
-Eigen::Vector3d currPos2; // end-effector position of guidance robot 2
-Eigen::Vector3d currPos3; // end-effector position of guidance robot 3
+Eigen::Vector3d currPos1;               // end-effector position of guidance robot 1
+Eigen::Vector3d currPos2;               // end-effector position of guidance robot 2
+Eigen::Vector3d currPos3;               // end-effector position of guidance robot 3
 Eigen::Vector3d globalCurrPos1;
 Eigen::Vector3d globalCurrPos2;
 Eigen::Vector3d globalCurrPos3;
@@ -133,15 +133,15 @@ double goal_delOriZ2 = 0;
 
 int numCollisions = 0;
 Eigen::Vector3d globalPosGuide;
-// guidelines for active following
-auto guideline31 = new chai3d::cShapeLine(globalCurrPos3, globalCurrPos1);
-auto guideline32 = new chai3d::cShapeLine(globalCurrPos3, globalCurrPos2);
+Eigen::MatrixXd collisionPoints;
 
-#define DELTA_GOAL_ORI_Z        10      // change in goal end-effector z-rotation after key input (in degrees)
-#define DELTA_GOAL_POS          0.005   // change in goal position after key input
-#define POS_ERROR_THRESHOLD     0.3     // position error norm required to determine contact
-#define MIN_CIRCLE_DIST         0.15    // minimum distance between origin of obstacle circles
-#define REPEL_GAIN              0.1     // gain for repelling payload away from collision spheres
+#define DELTA_GOAL_ORI_Z            10      // change in goal end-effector z-rotation after key input (in degrees)
+#define DELTA_GOAL_POS              0.005   // change in goal position after key input
+#define POS_ERROR_THRESHOLD         0.3     // position error norm required to determine contact
+#define MIN_CIRCLE_DIST             0.15    // minimum distance between origin of obstacle circles
+#define REPEL_GAIN                  0.1     // gain for repelling payload away from collision spheres
+#define MIN_REPEL_VEC_NORM          1e-3    // minimum norm of repel vector to perform normalization (to avoid singularities)
+#define FOLLOWER_Z_PERTURBATION     0.01    // amount to perturb follower in z-direction to escape collision spheres mapped by follower
 
 /* =======================================================================================
    MAIN LOOP
@@ -180,6 +180,14 @@ int main (int argc, char** argv) {
     robot3->updateModel();
 
     // add guidelines for active following
+    auto guideline31 = new chai3d::cShapeLine(globalCurrPos3, globalCurrPos1);
+    guideline31->setLineWidth(5);
+    guideline31->m_colorPointA.setGreen();
+    guideline31->m_colorPointB.setGreen();
+    auto guideline32 = new chai3d::cShapeLine(globalCurrPos3, globalCurrPos2);
+    guideline32->setLineWidth(5);
+    guideline32->m_colorPointA.setGreen();
+    guideline32->m_colorPointB.setGreen();
     graphics->_world->addChild(guideline31);
     graphics->_world->addChild(guideline32);
 
@@ -235,7 +243,7 @@ int main (int argc, char** argv) {
             collisionSphere->setTransparencyLevel(0.9);
             collisionSphere->m_material->setBlueCornflower();
             graphics->_world->addChild(collisionSphere);
-            collisionSphere->setLocalPos(globalPosGuide);
+            collisionSphere->setLocalPos(collisionPoints.row(numCollisions - 1));
             prevNumCollisions = numCollisions;
         }
 
@@ -382,6 +390,32 @@ void recordToCSV(Eigen::VectorXd &v, const std::string &filename)
     //    file.close();
 }
 //------------------------------------------------------------------------------
+// this function checks if a line intersects a sphere
+bool checkLineSphereIntersection(Eigen::Vector3d linePointA, Eigen::Vector3d linePointB, Eigen::Vector3d sphereCenter, double sphereRadius)
+{
+    double a = 0;
+    double b = 0;
+    double c = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        a += pow((linePointB[i] - linePointA[i]), 2);
+        b += 2 * (linePointB[i] - linePointA[i]) * (linePointA[i] - sphereCenter[i]);
+        c += pow(linePointA[i], 2) + pow(sphereCenter[i], 2) - (2 * (linePointA[i] * sphereCenter[i]));
+    }
+    c -= pow(sphereRadius, 2);
+
+    double discriminant = pow(b, 2) - (4 * a * c);
+
+    if (discriminant > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+//------------------------------------------------------------------------------
 //Simple Point structure
 //struct Point {
 //     Point( double X, double Y ): x(X), y(Y) {}
@@ -460,7 +494,7 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
     // Eigen::VectorXd collisionPoints;
     // vector<vector<double> > collisionPoints;
     bool contact = false; // flag for sensing contact
-    Eigen::MatrixXd collisionPoints;
+//    Eigen::MatrixXd collisionPoints;
 //    int numCollisions = 0;
     bool newCollisionPoint = false;
 //    Eigen::Vector3d lastContactPos1;
@@ -577,8 +611,6 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
             // Eigen::Vector3d posError1 = motion_primitive1->_posori_task->_current_position - motion_primitive1->_desired_position;
     //        if (posError1.norm() >= POS_ERROR_THRESHOLD)
 
-            robot3->positionInWorld(globalCurrPos3, motion_primitive3->_link_name, motion_primitive3->_control_frame.translation());
-
             if ( (posError.array().abs() >= POS_ERROR_THRESHOLD).any() or (sensed_force1.array() != 0.0).any()
                  or (sensed_force2.array() != 0.0).any() )
             {
@@ -656,10 +688,14 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 }
             }
 
+            // enable active following by moving along average of guidelines
+            // while remaining outside of collision spheress
+
             Eigen::Vector3d repelVec; repelVec.setZero();
             int offendingSpheres = 0;
+            double weight1 = 0.5;
+            double weight2 = 0.5;
 
-            // ensure that follower stays outside of collision spheres
             for (int i = 0; i < numCollisions; i++)
             {
                 // ensure that follower is outside of collision spheres
@@ -668,33 +704,44 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                     repelVec += globalCurrPos3.transpose() - collisionPoints.row(i);
                     offendingSpheres++;
                 }
-            }
-            repelVec.normalize();
 
-            // enable active following by moving along average of guidelines
-//            posFollower = (globalCurrPos1 - globalCurrPos3) + (globalCurrPos2 - globalCurrPos3);
-            double weight1 = 0.5;
-            double weight2 = 1 - weight1;
-            posFollower = weight1*goalDelPos.row(0).transpose() + weight2*goalDelPos.row(1).transpose();
-//            posFollower *= 1/2;
-            if (offendingSpheres != 0)
-            {
-                motion_primitive3->_desired_position = initial_position3 + posFollower + REPEL_GAIN*repelVec/offendingSpheres;
+                // if a guideline intersects with a collision sphere, give that guideline zero weight
+                if ( checkLineSphereIntersection(globalCurrPos1.transpose(), globalCurrPos3.transpose(), collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
+                {
+                    weight1 = 0;
+                    cout << "guideline 1 interference" << endl;
+                }
+                if ( checkLineSphereIntersection(globalCurrPos2.transpose(), globalCurrPos3.transpose(), collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
+                {
+                    weight2 = 0;
+                    cout << "guideline 2 interference" << endl;
+                }
             }
+            // normalize the repelling vector if it is non-zero
+            if (repelVec.norm() >= MIN_REPEL_VEC_NORM)
+            {
+                repelVec.normalize();
+            }
+            // perturb the follower if the repelling vector is zero
             else
             {
-                motion_primitive3->_desired_position = initial_position3 + posFollower;
+                motion_primitive3->_desired_position[2] += FOLLOWER_Z_PERTURBATION;
             }
+
+            // move along the average of the guidelines and away from collision points
+            // TODO: change this so the behavior is not jerky (do not use goalDelPos; instead, use something relative to globalCurrPos3)
+            posFollower = weight1*goalDelPos.row(0).transpose() + weight2*goalDelPos.row(1).transpose();
+            motion_primitive3->_desired_position = initial_position3 + posFollower + REPEL_GAIN*repelVec/max(1, offendingSpheres);
         }
 
         // otherwise, operate in free space
-        else
-        {
-            contact = false;
-            goalDelPos2 = goalDelPos1;
-            motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(1).transpose();
-            motion_primitive2->_desired_orientation = motion_primitive1->_posori_task->_current_orientation;
-        }
+//        else
+//        {
+//            contact = false;
+//            goalDelPos2 = goalDelPos1;
+//            motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(1).transpose();
+//            motion_primitive2->_desired_orientation = motion_primitive1->_posori_task->_current_orientation;
+//        }
 
         // set follower velocity
         motion_primitive3->_desired_velocity = Eigen::Vector3d(0,0,0);
