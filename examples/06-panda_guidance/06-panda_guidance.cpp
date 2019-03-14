@@ -578,6 +578,10 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 motion_primitive1->_desired_position = initial_position1 + goalDelPos.row(0).transpose();
                 motion_primitive1->_desired_velocity = Eigen::Vector3d(0,0,0);
 
+                // make sure that other guidance robot is specified distance away
+                motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(0).transpose();
+                motion_primitive2->_desired_velocity = Eigen::Vector3d(0,0,0);
+
 //                posGuide = currPos1;
                 robot1->position(posGuide, motion_primitive1->_link_name, motion_primitive1->_control_frame.translation());
                 robot1->positionInWorld(globalPosGuide, motion_primitive1->_link_name, motion_primitive1->_control_frame.translation());
@@ -596,8 +600,12 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 }
 
                 // set leader position and velocity
-                motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(1).transpose();
+                motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(0).transpose();
                 motion_primitive2->_desired_velocity = Eigen::Vector3d(0,0,0);
+
+                // make sure that other guidance robot is specified distance away
+                motion_primitive1->_desired_position = initial_position1 + goalDelPos.row(0).transpose();
+                motion_primitive1->_desired_velocity = Eigen::Vector3d(0,0,0);
 
 //                posGuide = currPos2;
                 robot2->position(posGuide, motion_primitive2->_link_name, motion_primitive2->_control_frame.translation());
