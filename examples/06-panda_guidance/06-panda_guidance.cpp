@@ -708,19 +708,23 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 // if a guideline intersects with a collision sphere, give that guideline zero weight
                 if ( checkLineSphereIntersection(globalCurrPos1, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
                 {
-                    weight1 = 0;
+//                    weight1 = 0;
+                    double dist = (globalCurrPos1.transpose() - collisionPoints.row(i)).norm();
+                    weight1 = min(0.5, dist);
                     if ( weight2 != 0.0 )
                     {
-                        weight2 = 1;
+                        weight2 = 1 - weight1;
                     }
                     cout << "guideline 1 interference" << endl;
                 }
                 if ( checkLineSphereIntersection(globalCurrPos2, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
                 {
-                    weight2 = 0;
+//                    weight2 = 0;
+                    double dist = (globalCurrPos2.transpose() - collisionPoints.row(i)).norm();
+                    weight1 = min(0.5, dist);
                     if ( weight1 != 0.0 )
                     {
-                        weight1 = 1;
+                        weight1 = 1 - weight2;
                     }
                     cout << "guideline 2 interference" << endl;
                 }
