@@ -139,7 +139,7 @@ Eigen::MatrixXd collisionPoints;
 #define DELTA_GOAL_POS              0.005   // change in goal position after key input
 #define POS_ERROR_THRESHOLD         0.3     // position error norm required to determine contact
 #define MIN_CIRCLE_DIST             0.15    // minimum distance between origin of obstacle circles
-#define REPEL_GAIN                  0.1     // gain for repelling payload away from collision spheres
+#define REPEL_GAIN                  0.3     // gain for repelling payload away from collision spheres
 #define MIN_REPEL_VEC_NORM          1e-3    // minimum norm of repel vector to perform normalization (to avoid singularities)
 #define FOLLOWER_Z_PERTURBATION     0.001   // amount to perturb follower in z-direction to escape collision spheres mapped by follower
 
@@ -511,10 +511,6 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 	bool fTimerDidSleep = true;
 	timer.initializeTimer(1000000); // 1 ms pause before starting loop
 
-	unsigned long long screw_counter = 0;
-	bool setup_flag = false;		// triggered when setup of position and orientation are complete
-	double theta_deg = 0;
-
 	while (fSimulationRunning) { //automatically set to false when simulation is quit
 		fTimerDidSleep = timer.waitForNextLoop();
 
@@ -543,6 +539,9 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
         robot3->positionInWorld(globalCurrPos3, motion_primitive3->_link_name, motion_primitive3->_control_frame.translation());
         Eigen::Vector3d posGuide;
         Eigen::Vector3d posError;
+        Eigen::Vector3d posError1;
+        Eigen::Vector3d posError2;
+        Eigen::Vector3d posError3;
         Eigen::Vector3d posFollower;
 
 		// update tasks model
@@ -563,6 +562,7 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 
         if (guidance == true)
         {
+            // use the following for controlling the guidance robots separately
             if ( guideRobot == 1 )
             {
                 if (changeOri)
@@ -600,11 +600,11 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 }
 
                 // set leader position and velocity
-                motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(0).transpose();
+                motion_primitive2->_desired_position = initial_position2 + goalDelPos.row(1).transpose();
                 motion_primitive2->_desired_velocity = Eigen::Vector3d(0,0,0);
 
                 // make sure that other guidance robot is specified distance away
-                motion_primitive1->_desired_position = initial_position1 + goalDelPos.row(0).transpose();
+                motion_primitive1->_desired_position = initial_position1 + goalDelPos.row(1).transpose();
                 motion_primitive1->_desired_velocity = Eigen::Vector3d(0,0,0);
 
 //                posGuide = currPos2;
@@ -619,41 +619,85 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
             // Eigen::Vector3d posError1 = motion_primitive1->_posori_task->_current_position - motion_primitive1->_desired_position;
     //        if (posError1.norm() >= POS_ERROR_THRESHOLD)
 
-            if ( (posError.array().abs() >= POS_ERROR_THRESHOLD).any() or (sensed_force1.array() != 0.0).any()
-                 or (sensed_force2.array() != 0.0).any() )
+            posError1 = currPos1 - motion_primitive1->_desired_position;
+            posError2 = currPos2 - motion_primitive2->_desired_position;
+            posError3 = currPos3 - motion_primitive3->_desired_position;
+
+            if ( (posError1.array().abs() >= POS_ERROR_THRESHOLD).any() or (sensed_force1.array() != 0.0).any() )
             {
                 contact = true;
                 // set current collision point
                 // ensure that current collision point is different enough from previous contact point
                 if ( numCollisions == 0 )
                 {
-                    cout << "adding first collision" << endl;
+                    // SEE ME
+//                    cout << "adding first collision" << endl;
                     numCollisions += 1;
                     collisionPoints.conservativeResize(numCollisions, 3);
-                    collisionPoints.row(numCollisions - 1) = globalPosGuide;
+                    collisionPoints.row(numCollisions - 1) = globalCurrPos1;
                 }
                 else
                 {
                     newCollisionPoint = true;
-                    cout << "LOOK HERE: " << globalPosGuide.transpose() << endl << numCollisions << endl << endl;
+                    // SEE ME
+//                    cout << "LOOK HERE: " << globalCurrPos1.transpose() << endl << numCollisions << endl << endl;
                     // loop over collisionPoints and check if any is within MIN_CIRCLE_DIST from currPos1
                     for (int i = 0; i < numCollisions; i++)
                     {
-                        cout << collisionPoints.row(i) << endl;
-                        cout << (globalPosGuide.transpose() - collisionPoints.row(i)).norm() << endl;
-                        if ( (globalPosGuide.transpose() - collisionPoints.row(i)).norm() < MIN_CIRCLE_DIST )
+                        // SEE ME
+//                        cout << collisionPoints.row(i) << endl;
+//                        cout << (globalCurrPos1.transpose() - collisionPoints.row(i)).norm() << endl;
+                        if ( (globalCurrPos1.transpose() - collisionPoints.row(i)).norm() < MIN_CIRCLE_DIST )
                         {
                             newCollisionPoint = false;
-    //                        cout << "new collision detected" << endl;
                             break;
                         }
                     }
                     if ( newCollisionPoint == true )
                     {
-    //                    cout << "new collision!" << endl;
                         numCollisions += 1;
                         collisionPoints.conservativeResize(numCollisions, 3);
-                        collisionPoints.row(numCollisions - 1) = globalPosGuide;
+                        collisionPoints.row(numCollisions - 1) = globalCurrPos1;
+                        newCollisionPoint = false;
+                    }
+                }
+            }
+
+            if ( (posError2.array().abs() >= POS_ERROR_THRESHOLD).any() or (sensed_force2.array() != 0.0).any() )
+            {
+                contact = true;
+                // set current collision point
+                // ensure that current collision point is different enough from previous contact point
+                if ( numCollisions == 0 )
+                {
+                    // SEE ME
+//                    cout << "adding first collision" << endl;
+                    numCollisions += 1;
+                    collisionPoints.conservativeResize(numCollisions, 3);
+                    collisionPoints.row(numCollisions - 1) = globalCurrPos2;
+                }
+                else
+                {
+                    newCollisionPoint = true;
+                    // SEE ME
+//                    cout << "LOOK HERE: " << globalCurrPos2.transpose() << endl << numCollisions << endl << endl;
+                    // loop over collisionPoints and check if any is within MIN_CIRCLE_DIST from currPos1
+                    for (int i = 0; i < numCollisions; i++)
+                    {
+                        // SEE ME
+//                        cout << collisionPoints.row(i) << endl;
+//                        cout << (globalCurrPos2.transpose() - collisionPoints.row(i)).norm() << endl;
+                        if ( (globalCurrPos2.transpose() - collisionPoints.row(i)).norm() < MIN_CIRCLE_DIST )
+                        {
+                            newCollisionPoint = false;
+                            break;
+                        }
+                    }
+                    if ( newCollisionPoint == true )
+                    {
+                        numCollisions += 1;
+                        collisionPoints.conservativeResize(numCollisions, 3);
+                        collisionPoints.row(numCollisions - 1) = globalCurrPos2;
                         newCollisionPoint = false;
                     }
                 }
@@ -666,7 +710,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 // ensure that current collision point is different enough from previous contact point
                 if ( numCollisions == 0 )
                 {
-                    cout << "adding first collision" << endl;
+                    // SEE ME
+//                    cout << "adding first collision" << endl;
                     numCollisions += 1;
                     collisionPoints.conservativeResize(numCollisions, 3);
                     collisionPoints.row(numCollisions - 1) = globalCurrPos3;
@@ -674,12 +719,14 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                 else
                 {
                     newCollisionPoint = true;
-                    cout << "LOOK HERE: " << globalCurrPos3.transpose() << endl << numCollisions << endl << endl;
+                    // SEE ME
+//                    cout << "LOOK HERE: " << globalCurrPos3.transpose() << endl << numCollisions << endl << endl;
                     // loop over collisionPoints and check if any is within MIN_CIRCLE_DIST from currPos1
                     for (int i = 0; i < numCollisions; i++)
                     {
-                        cout << collisionPoints.row(i) << endl;
-                        cout << (globalCurrPos3.transpose() - collisionPoints.row(i)).norm() << endl;
+                        // SEE ME
+//                        cout << collisionPoints.row(i) << endl;
+//                        cout << (globalCurrPos3.transpose() - collisionPoints.row(i)).norm() << endl;
                         if ( (globalCurrPos3.transpose() - collisionPoints.row(i)).norm() < MIN_CIRCLE_DIST )
                         {
                             newCollisionPoint = false;
@@ -723,7 +770,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                     {
                         weight2 = 1 - weight1;
                     }
-                    cout << "guideline 1 interference" << endl;
+                    // SEE ME
+//                    cout << "guideline 1 interference" << endl;
                 }
                 if ( checkLineSphereIntersection(globalCurrPos2, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
                 {
@@ -734,7 +782,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                     {
                         weight1 = 1 - weight2;
                     }
-                    cout << "guideline 2 interference" << endl;
+                    // SEE ME
+//                    cout << "guideline 2 interference" << endl;
                 }
             }
             // normalize the repelling vector if it is non-zero
@@ -753,11 +802,19 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //            posFollower = weight1*goalDelPos.row(0).transpose() + weight2*goalDelPos.row(1).transpose();
             if ( (weight1 != 0.0) or (weight2 != 0.0) )
             {
-                Eigen::Vector3d followVec1 = globalCurrPos1 - globalCurrPos3;
-                Eigen::Vector3d followVec2 = globalCurrPos2 - globalCurrPos3;
+                Eigen::Vector3d followVec1 = currPos1 - initial_position3;
+                Eigen::Vector3d followVec2 = currPos2 - initial_position3;
+//                Eigen::Vector3d followVec = Eigen::Vector3d(1.0, 1.0, 0.0);
 
-                posFollower = weight1 * followVec1  + weight2 * followVec2;
+                posFollower = weight1 * followVec1 + weight2 * followVec2;
+
+//                posFollower = weight1 * goalDelPos.row(0).transpose() + weight2 * goalDelPos.row(0).transpose();
+
                 motion_primitive3->_desired_position = initial_position3 + posFollower + REPEL_GAIN*repelVec/max(1, offendingSpheres);
+
+//                posFollower = weight1 * followVec1 * (pow(followVec1.norm(), 2));
+//                posFollower += weight2 * followVec2 * (pow(followVec2.norm(), 2));
+//                motion_primitive3->_desired_velocity = posFollower;
             }
             else
             {
@@ -793,18 +850,18 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 		curr_control_time++;
 		last_time = curr_time;
 
-        if (controller_counter % 500 == 0)
-        {
-//            cout << contact << endl;
-//            cout << collisionPoints << endl;
-//            cout << currPos1 << endl;
-//            cout << collisionPoints.row(collisionPoints.rows()-1) << endl;
-//            cout << motion_primitive1->_posori_task->_current_position << endl;
-//            if (numCollisions > 0){
-//                cout << (currPos1.transpose() - collisionPoints.row(collisionPoints.rows()-1)).norm() << endl;
-//            }
-//            cout << newCollisionPoint << endl;
-        }
+//        if (controller_counter % 500 == 0)
+//        {
+////            cout << contact << endl;
+////            cout << collisionPoints << endl;
+////            cout << currPos1 << endl;
+////            cout << collisionPoints.row(collisionPoints.rows()-1) << endl;
+////            cout << motion_primitive1->_posori_task->_current_position << endl;
+////            if (numCollisions > 0){
+////                cout << (currPos1.transpose() - collisionPoints.row(collisionPoints.rows()-1)).norm() << endl;
+////            }
+////            cout << newCollisionPoint << endl;
+//        }
 
 		//*
 		// Recording data
@@ -894,7 +951,7 @@ GLFWwindow* glfwInitialize() {
 
     // create window and make it current
     glfwWindowHint(GLFW_VISIBLE, 0);
-    GLFWwindow* window = glfwCreateWindow(windowW, windowH, "SAI2.0 - Bottle Cap Screwing Demo", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(windowW, windowH, "SAI2.0 - Leader-Follower Demo", NULL, NULL);
 	glfwSetWindowPos(window, windowPosX, windowPosY);
 	glfwShowWindow(window);
     glfwMakeContextCurrent(window);
