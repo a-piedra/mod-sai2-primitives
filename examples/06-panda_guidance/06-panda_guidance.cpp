@@ -83,9 +83,9 @@ const std::string currentDateTime() {
     return buf;
 }
 // file name for recording data
-const string record_file = "../../../src/dataPlotter/AA277/Data/dataLeaderFollower_" + currentDateTime() + ".csv";
+const string record_file = "../../../src/dataPlotter/AA277/dataLeaderFollower_" + currentDateTime() + ".csv";
 // helper function to combine data into vector
-void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followVec1Norm, double followVec2Norm, double weight1, double weight2, Eigen::MatrixXd collisionPoints);
+void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followPosErrorNorm, double followVec1Norm, double followVec2Norm, double weight1, double weight2, int numCollisions, Eigen::Vector3d lastCollisionPoint);
 // helper function to record data to CSV file
 void recordToCSV(Eigen::VectorXd &v, const std::string &filename);
 
@@ -359,29 +359,36 @@ int main (int argc, char** argv) {
 /* ----------------------------------------------------------------------------------
 	Utility functions
 -------------------------------------------------------------------------------------*/
-void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followVec1Norm, double followVec2Norm, double weight1, double weight2, Eigen::MatrixXd collisionPoints)
+void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followPosErrorNorm, double followVec1Norm, double followVec2Norm, double weight1, double weight2, int numCollisions, Eigen::Vector3d lastCollisionPoint)
 {
-    // 1 value for time, 9 values for end-effector positions, 2 values for guidance vector norms, 2 values for guidance weights, and 3*numCollisions values for collisionPoints
-    long int numCollisionPoints = collisionPoints.rows();
-    Eigen::VectorXd data = Eigen::VectorXd::Zero(1 + 9 + 2 + 2 + (3*numCollisionPoints));
+    // 1 value for time, 9 values for end-effector positions, 1 value for follow position error norm, 2 values for guidance vector norms, 2 values for guidance weights, 1 value for numCollisions, and 3 values for lastCollisionPoint
+//    long int numCollisionPoints = collisionPoints.rows();
+    Eigen::VectorXd data = Eigen::VectorXd::Zero(1 + 9 + 1 + 2 + 2 + 1 + 3);
 	data(0) = curr_time;
 	
 	for (int i = 0; i < 3; i++) {
         data(1 + i) = globalCurrPos1(i);
         data(4 + i) = globalCurrPos2(i);
         data(7 + i) = globalCurrPos3(i);
+        data(16 + i) = lastCollisionPoint(i);
 	}
 
-    data(10) = followVec1Norm;
-    data(11) = followVec2Norm;
-    data(12) = weight1;
-    data(13) = weight2;
+    data(10) = followPosErrorNorm;
+    data(11) = followVec1Norm;
+    data(12) = followVec2Norm;
+    data(13) = weight1;
+    data(14) = weight2;
+    data(15) = numCollisions;
 
-    for (int i = 0; i < numCollisionPoints; i++) {
-        for (int j = 0; j < 3; j++) {
-            data(14 + 3*i + j) = collisionPoints.row(i)(j);
-        }
-    }
+//    for (int i = 0; i < 3; i++) {
+//        data(15 + i) = lastCollisionPoint(i);
+//    }
+
+//    for (int i = 0; i < numCollisionPoints; i++) {
+//        for (int j = 0; j < 3; j++) {
+//            data(14 + 3*i + j) = collisionPoints.row(i)(j);
+//        }
+//    }
 
 	recordToCSV(data, record_file);
 }
@@ -562,6 +569,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
         Eigen::Vector3d followVec2;
         double followVec1Norm;
         double followVec2Norm;
+        double followPosErrorNorm;
+        Eigen::Vector3d lastCollisionPoint; lastCollisionPoint.setZero();
 
 		// update tasks model
         screwing_primitive1->updatePrimitiveModel();
@@ -883,12 +892,14 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
             followVec1Norm = followVec1.norm();
             followVec2Norm = followVec2.norm();
 
-            for (int i = 0; i < numCollisions; i++){
-                cout << collisionPoints.row(collisionPoints.rows() - 1) << endl;
-                cout << collisionPoints.row(collisionPoints.rows() - 1)(1) << endl;
+            followPosErrorNorm = posError3.norm();
+
+            if (numCollisions != 0)
+            {
+                lastCollisionPoint = collisionPoints.row(collisionPoints.rows() - 1);
             }
 
-            recordData(curr_time, globalCurrPos1, globalCurrPos2, globalCurrPos3, followVec1Norm, followVec2Norm, weight1, weight2, collisionPoints);
+            recordData(curr_time, globalCurrPos1, globalCurrPos2, globalCurrPos3, followPosErrorNorm, followVec1Norm, followVec2Norm, weight1, weight2, numCollisions, lastCollisionPoint);
 //            }
         }
 
