@@ -139,9 +139,9 @@ Eigen::MatrixXd collisionPoints;
 #define DELTA_GOAL_POS              0.005   // change in goal position after key input
 #define POS_ERROR_THRESHOLD         0.3     // position error norm required to determine contact
 #define MIN_CIRCLE_DIST             0.15    // minimum distance between origin of obstacle circles
-#define REPEL_GAIN                  0.3     // gain for repelling payload away from collision spheres
+#define REPEL_GAIN                  1.0     // gain for repelling payload away from collision spheres
 #define MIN_REPEL_VEC_NORM          1e-3    // minimum norm of repel vector to perform normalization (to avoid singularities)
-#define FOLLOWER_Z_PERTURBATION     0.001   // amount to perturb follower in z-direction to escape collision spheres mapped by follower
+#define FOLLOWER_Z_PERTURBATION     0.005   // amount to perturb follower in z-direction to escape collision spheres mapped by follower
 
 /* =======================================================================================
    MAIN LOOP
@@ -502,6 +502,10 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //    {
 //        lastContactPos1(i) = numeric_limits<double>::infinity();
 //    }
+    Eigen::Vector3d repelVec; repelVec.setZero();
+    int offendingSpheres = 0;
+    double weight1 = 0.5;
+    double weight2 = 0.5;
 
 	// create a loop timer
 	double control_freq = 1000;
@@ -744,12 +748,7 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
             }
 
             // enable active following by moving along average of guidelines
-            // while remaining outside of collision spheress
-
-            Eigen::Vector3d repelVec; repelVec.setZero();
-            int offendingSpheres = 0;
-            double weight1 = 0.5;
-            double weight2 = 0.5;
+            // while remaining outside of collision spheres
 
             for (int i = 0; i < numCollisions; i++)
             {
@@ -771,19 +770,19 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                         weight2 = 1 - weight1;
                     }
                     // SEE ME
-//                    cout << "guideline 1 interference" << endl;
+//                    cout << "guideline 1 interference; dist = " << dist << endl;
                 }
                 if ( checkLineSphereIntersection(globalCurrPos2, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == true )
                 {
 //                    weight2 = 0;
                     double dist = (globalCurrPos2.transpose() - collisionPoints.row(i)).norm();
-                    weight1 = min(0.5, dist);
+                    weight2 = min(0.5, dist);
                     if ( weight1 != 0.0 )
                     {
                         weight1 = 1 - weight2;
                     }
                     // SEE ME
-//                    cout << "guideline 2 interference" << endl;
+//                    cout << "guideline 2 interference; dist = " << dist << endl;
                 }
             }
             // normalize the repelling vector if it is non-zero
@@ -821,6 +820,9 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //                motion_primitive3->_desired_position = currPos3;
                 motion_primitive3->_desired_position[2] += FOLLOWER_Z_PERTURBATION;
             }
+
+            // print/record the guidance weights
+
         }
 
         // otherwise, operate in free space
@@ -861,6 +863,8 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 ////                cout << (currPos1.transpose() - collisionPoints.row(collisionPoints.rows()-1)).norm() << endl;
 ////            }
 ////            cout << newCollisionPoint << endl;
+//                cout << "Weight 1: " << weight1 << endl;
+//                cout << "Weight 2: " << weight2 << endl;
 //        }
 
 		//*
