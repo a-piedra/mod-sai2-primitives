@@ -83,9 +83,9 @@ const std::string currentDateTime() {
     return buf;
 }
 // file name for recording data
-const string record_file = "../../../src/dataPlotter/Data/dataPandaScrew_" + currentDateTime() + ".csv";
+const string record_file = "../../../src/dataPlotter/AA277/Data/dataLeaderFollower_" + currentDateTime() + ".csv";
 // helper function to combine data into vector
-void recordData(double curr_time, int dof, Eigen::Vector3d sensed_force, Eigen::Vector3d sensed_moment, Eigen::VectorXd command_torques);
+void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followVec1Norm, double followVec2Norm, double weight1, double weight2, Eigen::MatrixXd collisionPoints);
 // helper function to record data to CSV file
 void recordToCSV(Eigen::VectorXd &v, const std::string &filename);
 
@@ -359,19 +359,30 @@ int main (int argc, char** argv) {
 /* ----------------------------------------------------------------------------------
 	Utility functions
 -------------------------------------------------------------------------------------*/
-void recordData(double curr_time, int dof, Eigen::Vector3d sensed_force, Eigen::Vector3d sensed_moment, Eigen::VectorXd command_torques)
+void recordData(double curr_time, Eigen::Vector3d globalCurrPos1, Eigen::Vector3d globalCurrPos2, Eigen::Vector3d globalCurrPos3, double followVec1Norm, double followVec2Norm, double weight1, double weight2, Eigen::MatrixXd collisionPoints)
 {
-	// 1 value for time, 3 values for forces, 3 values for moments, and dof values for command torques  
-	Eigen::VectorXd data = Eigen::VectorXd::Zero(7 + dof);
+    // 1 value for time, 9 values for end-effector positions, 2 values for guidance vector norms, 2 values for guidance weights, and 3*numCollisions values for collisionPoints
+    long int numCollisionPoints = collisionPoints.rows();
+    Eigen::VectorXd data = Eigen::VectorXd::Zero(1 + 9 + 2 + 2 + (3*numCollisionPoints));
 	data(0) = curr_time;
 	
 	for (int i = 0; i < 3; i++) {
-        data(1 + i) = sensed_force(i);
-		data(4 + i) = sensed_moment(i);
+        data(1 + i) = globalCurrPos1(i);
+        data(4 + i) = globalCurrPos2(i);
+        data(7 + i) = globalCurrPos3(i);
 	}
-	for (int i = 0; i < dof; i++) {
-		data(7 + i) = command_torques(i);
-	}
+
+    data(10) = followVec1Norm;
+    data(11) = followVec2Norm;
+    data(12) = weight1;
+    data(13) = weight2;
+
+    for (int i = 0; i < numCollisionPoints; i++) {
+        for (int j = 0; j < 3; j++) {
+            data(14 + 3*i + j) = collisionPoints.row(i)(j);
+        }
+    }
+
 	recordToCSV(data, record_file);
 }
 //------------------------------------------------------------------------------
@@ -547,6 +558,10 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
         Eigen::Vector3d posError2;
         Eigen::Vector3d posError3;
         Eigen::Vector3d posFollower;
+        Eigen::Vector3d followVec1;
+        Eigen::Vector3d followVec2;
+        double followVec1Norm;
+        double followVec2Norm;
 
 		// update tasks model
         screwing_primitive1->updatePrimitiveModel();
@@ -784,6 +799,13 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
                     // SEE ME
 //                    cout << "guideline 2 interference; dist = " << dist << endl;
                 }
+                // reset weights if no collision detected
+                if ( (checkLineSphereIntersection(globalCurrPos1, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == false) and
+                     (checkLineSphereIntersection(globalCurrPos2, globalCurrPos3, collisionPoints.row(i), MIN_CIRCLE_DIST) == false) )
+                {
+                     weight1 = 0.5;
+                     weight2 = 0.5;
+                }
             }
             // normalize the repelling vector if it is non-zero
             if (repelVec.norm() >= MIN_REPEL_VEC_NORM)
@@ -801,8 +823,9 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //            posFollower = weight1*goalDelPos.row(0).transpose() + weight2*goalDelPos.row(1).transpose();
             if ( (weight1 != 0.0) or (weight2 != 0.0) )
             {
-                Eigen::Vector3d followVec1 = currPos1 - initial_position3;
-                Eigen::Vector3d followVec2 = currPos2 - initial_position3;
+                followVec1 = currPos1 - initial_position3;
+                followVec2 = currPos2 - initial_position3;
+
 //                Eigen::Vector3d followVec = Eigen::Vector3d(1.0, 1.0, 0.0);
 
                 posFollower = weight1 * followVec1 + weight2 * followVec2;
@@ -820,9 +843,6 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //                motion_primitive3->_desired_position = currPos3;
                 motion_primitive3->_desired_position[2] += FOLLOWER_Z_PERTURBATION;
             }
-
-            // print/record the guidance weights
-
         }
 
         // otherwise, operate in free space
@@ -852,6 +872,27 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 		curr_control_time++;
 		last_time = curr_time;
 
+        //*
+        // Recording data
+        //*
+        if (controller_counter % 10 == 0)
+        {
+            // wait for user input before recording any data
+//            if ( (goalDelPos.row(0).any() != 0.0) or (goalDelPos.row(1).any() != 0.0) )
+//            {
+            followVec1Norm = followVec1.norm();
+            followVec2Norm = followVec2.norm();
+
+            for (int i = 0; i < numCollisions; i++){
+                cout << collisionPoints.row(collisionPoints.rows() - 1) << endl;
+                cout << collisionPoints.row(collisionPoints.rows() - 1)(1) << endl;
+            }
+
+            recordData(curr_time, globalCurrPos1, globalCurrPos2, globalCurrPos3, followVec1Norm, followVec2Norm, weight1, weight2, collisionPoints);
+//            }
+        }
+
+
 //        if (controller_counter % 500 == 0)
 //        {
 ////            cout << contact << endl;
@@ -866,14 +907,6 @@ void control(Sai2Model::Sai2Model* robot1, Sai2Model::Sai2Model* robot2, Sai2Mod
 //                cout << "Weight 1: " << weight1 << endl;
 //                cout << "Weight 2: " << weight2 << endl;
 //        }
-
-		//*
-		// Recording data
-		//*
-//		if (curr_time <= 8.0)
-//		{
-//			recordData(curr_time, dof, sensed_force, sensed_moment, command_torques);
-//		}
 	}
 
 	double end_time = timer.elapsedTime();
