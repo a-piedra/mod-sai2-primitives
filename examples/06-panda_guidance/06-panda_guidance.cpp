@@ -139,7 +139,7 @@ Eigen::MatrixXd collisionPoints;
 #define DELTA_GOAL_POS              0.005   // change in goal position after key input
 #define POS_ERROR_THRESHOLD         0.3     // position error norm required to determine contact
 #define MIN_CIRCLE_DIST             0.15    // minimum distance between origin of obstacle circles
-#define REPEL_GAIN                  1.0     // gain for repelling payload away from collision spheres
+#define REPEL_GAIN                  5.0     // gain for repelling payload away from collision spheres
 #define MIN_REPEL_VEC_NORM          1e-3    // minimum norm of repel vector to perform normalization (to avoid singularities)
 #define FOLLOWER_Z_PERTURBATION     0.005   // amount to perturb follower in z-direction to escape collision spheres mapped by follower
 
